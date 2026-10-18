@@ -5,6 +5,8 @@ import os
 import sys
 import tempfile
 import unittest
+import urllib.error
+from unittest import mock
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -221,6 +223,37 @@ class DemoTests(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(text.splitlines()[0], jev_client.DEMO_LABEL)
         self.assertEqual(before, set(os.listdir(ROOT)))
+
+    def test_demo_fit_rejects_input_missing_from_recordings(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            items = os.path.join(tmp, "items.jsonl")
+            with open(items, "w", encoding="utf-8") as fh:
+                fh.write('{"id":"x","text":"unrecorded one","label":true}\n')
+                fh.write('{"id":"y","text":"unrecorded two","label":false}\n')
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                code = lab.main(["--demo", "fit", items,
+                                 os.path.join(ROOT, "examples", "questions.json")])
+        self.assertEqual(code, 2)
+        self.assertEqual(stdout.getvalue(), "")
+        self.assertEqual(stderr.getvalue(), "error: no recorded answer for this input; demo mode "
+                         "replays the bundled examples only, run live with a key\n")
+
+    def test_live_fit_rejects_bad_api_key_once(self):
+        error = urllib.error.HTTPError(jev_client.API_URL, 401, "Unauthorized", {}, None)
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with mock.patch.dict(os.environ, {"JEV_API_KEY": "bad"}, clear=True), \
+                mock.patch("urllib.request.urlopen", side_effect=error), \
+                contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            code = lab.main(["fit", os.path.join(ROOT, "examples", "commands.jsonl"),
+                             os.path.join(ROOT, "examples", "questions.json"), "--limit", "1"])
+        self.assertEqual(code, 2)
+        self.assertEqual(stdout.getvalue(), "")
+        lines = stderr.getvalue().splitlines()
+        self.assertEqual(len(lines), 1)
+        self.assertIn("JEV_API_KEY", lines[0])
+        self.assertIn("console.typesafe.ai/keys", lines[0])
+        self.assertNotIn("Traceback", stderr.getvalue())
 
     def test_policy_schema(self):
         with tempfile.TemporaryDirectory() as tmp:

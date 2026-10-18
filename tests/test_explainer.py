@@ -18,8 +18,10 @@ class ExplainerTests(unittest.TestCase):
     def test_single_file_no_network_under_150kb(self):
         html = page()
         self.assertLess(len(html.encode("utf-8")), 150 * 1024)
-        self.assertNotRegex(html, r"https?://")
+        # no network loads: the only allowed absolute URL is the repo link in the rail
+        self.assertNotRegex(html.replace("https://github.com/CapCurious/jev-threshold-lab", ""), r"https?://")
         self.assertNotRegex(html, r"<script[^>]+src=")
+        self.assertNotRegex(html, r"<link[^>]+href=|@import|fetch\(|XMLHttpRequest|url\(\s*['\"]?https?:")
         self.assertIn('<meta name="color-scheme" content="light dark">', html)
 
     def test_rail_anchors_resolve_and_match_headings(self):

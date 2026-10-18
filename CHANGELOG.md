@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased, 2026-10-18 (iteration 1 of the quality loop)
+
+- README cut from 1,707 to about 1,090 words: first screen is the purpose, the strongest measured number, the demo and a three-line quickstart; cost per 1,000 and 100,000 commands and a "nothing to host" line added; the Jev section is shared word for word with the sibling kits.
+- jev_client: HTTP 401 or 403 raises one clear line naming JEV_API_KEY and the console URL; `fit` stops on the first auth error with exit 2.
+- Demo mode no longer answers an input that has no recording; it exits 2 with one line instead of replaying the first recorded answer.
+- Explainer: a "Repo on GitHub" link in the rail; the no-network test now allows that one anchor.
+- Gate: tests `OK (skipped=1)`, demo byte-identical, privacy grep all classes zero except the public origin remote, leakage scan 0 findings, scorecard 14 of 15 on the working tree (the fifteenth, the explainer repo link on the live page, turns green when Pages rebuilds).
+
 ## v4 (2026-10-18)
 
 Docs glosses from cold reads. No code changed.

@@ -101,6 +101,7 @@ footer{color:var(--muted);font-size:13px}
 <li><a href="#jev">What Jev is</a></li>
 <li><a href="#rule">The band rule</a></li>
 <li><a href="#limits">The limits</a></li>
+<li><a href="https://github.com/CapCurious/jev-threshold-lab" rel="noopener" target="_blank">Repo on GitHub</a></li>
 </ol>
 </nav>
 <main>
@@ -304,7 +305,7 @@ el.best.addEventListener("click",function(){
 window.jevLab={pickBands:pickBands,metricsAt:metricsAt,reliability:reliability,state:function(){return {act:el.act.value,review:el.rev.value};}};
 
 // rail: highlight the section in view with a plain scroll listener
-var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+var links=Array.prototype.slice.call(document.querySelectorAll('.rail a[href^="#"]'));
 var secs=links.map(function(a){return document.getElementById(a.getAttribute("href").slice(1));});
 function mark(){
  var y=window.innerHeight*0.2,cur=0,i;

@@ -368,6 +368,8 @@ def fit_items(client, items, questions, record=None, log=None):
                 answers, usage = client.ask(state, questions)
                 break
             except jev_client.JevError as exc:
+                if exc.status in (401, 403) or isinstance(client, jev_client.RecordedClient):
+                    raise
                 if attempt == 2:
                     failures += 1
                     if log:
@@ -438,6 +440,8 @@ def cmd_fit(args, out=print):
     started = time.time()
     rows, failures = fit_items(client, items, questions, record, log)
     elapsed = time.time() - started
+    if args.demo:
+        out(jev_client.DEMO_LABEL)
     if not rows:
         raise SystemExit("no successful calls; nothing written")
     source = os.path.basename(args.items)
@@ -574,7 +578,7 @@ def build_parser():
 
 def main(argv=None):
     args = build_parser().parse_args(argv)
-    if args.demo:
+    if args.demo and args.cmd != "fit":
         print(jev_client.DEMO_LABEL)
     try:
         if args.cmd is None:
@@ -590,7 +594,7 @@ def main(argv=None):
         return 2
     except (jev_client.JevError, FileNotFoundError) as exc:
         print("error: {}".format(exc), file=sys.stderr)
-        return 1
+        return 2 if isinstance(exc, jev_client.JevError) else 1
 
 
 if __name__ == "__main__":
