@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jev-threshold-lab"
+version = "0.1.0"
+description = "Fit, sweep and band confidence thresholds for Jev probabilities, and emit a policy.json."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[project.scripts]
+jev-threshold-lab = "jev_threshold_lab:main"
+
+[tool.setuptools]
+py-modules = ["jev_threshold_lab", "jev_client"]

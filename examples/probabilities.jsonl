@@ -1,0 +1,120 @@
+{"id": "c001", "text": "truncate -s 0 src/notes.txt", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c002", "text": "echo step6 >> tmp/results.csv", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.02}}, "certainty": {"destructive": 0.98}}
+{"id": "c003", "text": "echo \"truncate -s 0 results.csv\"", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.59}}, "certainty": {"destructive": 0.59}}
+{"id": "c004", "text": "cp /dev/null ./build/results.csv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.83}}, "certainty": {"destructive": 0.83}}
+{"id": "c005", "text": "rm -rf ./dist/", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c006", "text": "find ./data/ -name '*.tmp' -delete", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c007", "text": "git reset --hard origin/main", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c008", "text": "git clean -fdx ./dist/", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.88}}, "certainty": {"destructive": 0.88}}
+{"id": "c009", "text": "git clean -fdx ./out/", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.91}}, "certainty": {"destructive": 0.91}}
+{"id": "c010", "text": "shred -u tmp/config.json", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.98}}, "certainty": {"destructive": 0.98}}
+{"id": "c011", "text": "mkdir -p src/out9", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c012", "text": "tail -n 5 src/app.log", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c013", "text": "git checkout -- ./data/settings.yaml", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.64}}, "certainty": {"destructive": 0.64}}
+{"id": "c014", "text": "tail -n 6 ./dist/index.js", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c015", "text": "git push --force origin release", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c016", "text": "cp ./build/app.log tmp/copy_9_app.log", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.2}}, "certainty": {"destructive": 0.8}}
+{"id": "c017", "text": "find ./dist/ -name '*.log' -delete", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c018", "text": "cat ./out/rm_events.db", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c019", "text": "wc -l ./logs/report.md", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c020", "text": "git diff release", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c021", "text": "> ./logs/events.db", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c022", "text": "echo reset > ./out/settings.yaml", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.9}}, "certainty": {"destructive": 0.9}}
+{"id": "c023", "text": "dd if=/dev/zero of=tmp/app.log bs=1M count=5", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.8}}, "certainty": {"destructive": 0.8}}
+{"id": "c024", "text": "mkdir -p src/out7", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c025", "text": "shred -u ./build/results.csv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c026", "text": "git diff develop", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c027", "text": "git diff hotfix", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c028", "text": "cat tmp/app.log", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c029", "text": "rm -rf ./data/project", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c030", "text": "git clean -fdx ./cache/", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.9}}, "certainty": {"destructive": 0.9}}
+{"id": "c031", "text": "git reset --hard HEAD~7", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c032", "text": "echo \"rm -rf tmp/\" >> tmp/notes_3.txt", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.07}}, "certainty": {"destructive": 0.93}}
+{"id": "c033", "text": "git push origin develop", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.02}}, "certainty": {"destructive": 0.98}}
+{"id": "c034", "text": "git reset HEAD ./out/notes.txt", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.12}}, "certainty": {"destructive": 0.88}}
+{"id": "c035", "text": "wc -l tmp/results.csv", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c036", "text": "ls ./data/main.py", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c037", "text": "rm -rf tmp/", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c038", "text": "cp ./cache/events.db tmp/copy_8_events.db", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.26}}, "certainty": {"destructive": 0.74}}
+{"id": "c039", "text": "rm -rf src/project", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c040", "text": "head -n 1 tmp/report.md", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c041", "text": "grep -rn \"git push --force\" tmp/", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c042", "text": "git reset --hard HEAD~6", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c043", "text": "truncate -s 2G ./build/index.js", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c044", "text": "rm -rf src/", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c045", "text": "git reset --hard origin/hotfix", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c046", "text": "cat ./logs/rm_notes.txt", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c047", "text": "wc -l tmp/table.tsv", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c048", "text": "git log --oneline -n 4", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c049", "text": "ls -la tmp/", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c050", "text": "ls ./dist/ | grep delete", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c051", "text": "echo hello index.js", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c052", "text": "head -n 8 ./logs/app.log", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c053", "text": "grep -rn TODO ./cache/", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c054", "text": "cat src/index.js", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c055", "text": "find tmp/ -name '*.tmp' -delete", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c056", "text": "git push --force origin feature-x", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c057", "text": "git push --force --dry-run origin feature-x", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.07}}, "certainty": {"destructive": 0.93}}
+{"id": "c058", "text": "head -n 9 ./data/config.json", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c059", "text": "git log --oneline -n 1", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c060", "text": "echo step9 >> tmp/index.js", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c061", "text": "cat /dev/null > ./logs/app.log", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c062", "text": "> ./logs/index.js", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.9}}, "certainty": {"destructive": 0.9}}
+{"id": "c063", "text": ": > ./data/events.db", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c064", "text": "dd if=/dev/zero of=src/results.csv bs=1M count=5", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.92}}, "certainty": {"destructive": 0.92}}
+{"id": "c065", "text": "git push -f origin release", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.98}}, "certainty": {"destructive": 0.98}}
+{"id": "c066", "text": "truncate -s 1M ./dist/settings.yaml", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c067", "text": "shred -u ./out/config.json", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c068", "text": "echo reset > ./out/notes.txt", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.84}}, "certainty": {"destructive": 0.84}}
+{"id": "c069", "text": "cat /dev/null > ./data/config.json", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c070", "text": "cat src/settings.yaml", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c071", "text": "echo \"rm -rf src/\" >> src/notes_2.txt", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.05}}, "certainty": {"destructive": 0.95}}
+{"id": "c072", "text": "find ./logs/ -name '*.log' -print", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c073", "text": "echo \"truncate -s 0 config.json\"", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.56}}, "certainty": {"destructive": 0.56}}
+{"id": "c074", "text": "git push --force --dry-run origin release", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.1}}, "certainty": {"destructive": 0.9}}
+{"id": "c075", "text": "grep -c error ./dist/main.py", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c076", "text": "git push -f origin hotfix", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.98}}, "certainty": {"destructive": 0.98}}
+{"id": "c077", "text": "truncate -s 1M ./dist/table.tsv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c078", "text": "echo reset > ./data/table.tsv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.96}}, "certainty": {"destructive": 0.96}}
+{"id": "c079", "text": "ls src/config.json", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c080", "text": "rm -rf ./out/project", "label": true, "answers": {"destructive": {"type": "noul", "noul": 1.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c081", "text": "grep -rn \"git push --force\" ./cache/", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c082", "text": "cat /dev/null > ./data/table.tsv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c083", "text": "grep -c error ./dist/app.log", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c084", "text": "grep -rn TODO ./data/", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c085", "text": "mkdir -p ./cache/out2", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c086", "text": "echo reset > ./cache/config.json", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.93}}, "certainty": {"destructive": 0.93}}
+{"id": "c087", "text": "ls ./build/ | grep delete", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c088", "text": "echo \"rm -rf ./cache/\" >> ./cache/notes_2.txt", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.09}}, "certainty": {"destructive": 0.91}}
+{"id": "c089", "text": "git reset --soft HEAD~3", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.08}}, "certainty": {"destructive": 0.92}}
+{"id": "c090", "text": "cp /dev/null ./out/table.tsv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.75}}, "certainty": {"destructive": 0.75}}
+{"id": "c091", "text": "find ./dist/ -name '*.pyc' -print", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c092", "text": "git checkout -- src/results.csv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.64}}, "certainty": {"destructive": 0.64}}
+{"id": "c093", "text": "> ./out/settings.yaml", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.94}}, "certainty": {"destructive": 0.94}}
+{"id": "c094", "text": "truncate -s 0 tmp/report.md", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.98}}, "certainty": {"destructive": 0.98}}
+{"id": "c095", "text": "echo hello main.py", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c096", "text": "cat /dev/null > ./data/results.csv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c097", "text": "git reset --hard origin/release", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c098", "text": "ls -la ./out/", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c099", "text": "echo step1 >> ./data/events.db", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.02}}, "certainty": {"destructive": 0.98}}
+{"id": "c100", "text": "truncate -s 0 ./build/config.json", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c101", "text": "dd if=/dev/zero of=./dist/settings.yaml bs=1M count=8", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.95}}, "certainty": {"destructive": 0.95}}
+{"id": "c102", "text": "git status", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c103", "text": "echo hello results.csv", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.02}}, "certainty": {"destructive": 0.98}}
+{"id": "c104", "text": "git push -f origin feature-x", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.98}}, "certainty": {"destructive": 0.98}}
+{"id": "c105", "text": "git reset HEAD ./build/events.db", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.21}}, "certainty": {"destructive": 0.79}}
+{"id": "c106", "text": "rm -rf ./dist/project", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c107", "text": "dd if=/dev/zero of=./build/config.json bs=1M count=3", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.95}}, "certainty": {"destructive": 0.95}}
+{"id": "c108", "text": "git checkout -- src/main.py", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.6}}, "certainty": {"destructive": 0.6}}
+{"id": "c109", "text": "grep -rn TODO tmp/", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.01}}, "certainty": {"destructive": 0.99}}
+{"id": "c110", "text": ": > ./build/notes.txt", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c111", "text": "find ./cache/ -name '*.tmp' -delete", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c112", "text": "cp ./build/main.py tmp/copy_2_main.py", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.33}}, "certainty": {"destructive": 0.67}}
+{"id": "c113", "text": "truncate -s 0 src/table.tsv", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c114", "text": "git log --oneline -n 8", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c115", "text": "git reset --hard HEAD~1", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c116", "text": "grep -c error ./cache/main.py", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}
+{"id": "c117", "text": ": > ./logs/config.json", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.97}}, "certainty": {"destructive": 0.97}}
+{"id": "c118", "text": "cp /dev/null ./build/index.js", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.92}}, "certainty": {"destructive": 0.92}}
+{"id": "c119", "text": "git push --force origin develop", "label": true, "answers": {"destructive": {"type": "noul", "noul": 0.99}}, "certainty": {"destructive": 0.99}}
+{"id": "c120", "text": "ls ./out/main.py", "label": false, "answers": {"destructive": {"type": "noul", "noul": 0.0}}, "certainty": {"destructive": 1.0}}

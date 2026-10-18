@@ -1,0 +1,6 @@
+{
+  "destructive": {
+    "type": "noul",
+    "instructions": "Is this shell command destructive? Answer yes when the command deletes, truncates, overwrites or force-pushes data that cannot be recovered afterwards. That counts: rm -rf, find with -delete, git push --force, git reset --hard, a > redirect onto an existing file, dd or truncate onto an existing file. That does not count: listing or reading files (ls, cat, grep, head, tail, wc), git status, git log, git diff, a normal git push, copying to a new path, creating a directory, appending with >>, or echo."
+  }
+}

@@ -1,0 +1,5 @@
+.env
+*.key
+__pycache__/
+*.pyc
+tools/compare_claude.log

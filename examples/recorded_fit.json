@@ -1,0 +1,2407 @@
+{
+  "model": "jev-1.13.0",
+  "recorded_on": "2026-10-18",
+  "note": "synthetic commands; replayed by --demo",
+  "records": [
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "truncate -s 0 src/notes.txt"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo step6 >> tmp/results.csv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.02
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo \"truncate -s 0 results.csv\""
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.59
+        }
+      },
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cp /dev/null ./build/results.csv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.83
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "rm -rf ./dist/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "find ./data/ -name '*.tmp' -delete"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 407,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset --hard origin/main"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git clean -fdx ./dist/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.88
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git clean -fdx ./out/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.91
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "shred -u tmp/config.json"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.98
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "mkdir -p src/out9"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "tail -n 5 src/app.log"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git checkout -- ./data/settings.yaml"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.64
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "tail -n 6 ./dist/index.js"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push --force origin release"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cp ./build/app.log tmp/copy_9_app.log"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.2
+        }
+      },
+      "usage": {
+        "input_tokens": 408,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "find ./dist/ -name '*.log' -delete"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 407,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat ./out/rm_events.db"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "wc -l ./logs/report.md"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git diff release"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 399,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "> ./logs/events.db"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo reset > ./out/settings.yaml"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.9
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "dd if=/dev/zero of=tmp/app.log bs=1M count=5"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.8
+        }
+      },
+      "usage": {
+        "input_tokens": 414,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "mkdir -p src/out7"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "shred -u ./build/results.csv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git diff develop"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 399,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git diff hotfix"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat tmp/app.log"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "rm -rf ./data/project"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git clean -fdx ./cache/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.9
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset --hard HEAD~7"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo \"rm -rf tmp/\" >> tmp/notes_3.txt"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.07
+        }
+      },
+      "usage": {
+        "input_tokens": 410,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push origin develop"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.02
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset HEAD ./out/notes.txt"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.12
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "wc -l tmp/results.csv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "ls ./data/main.py"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "rm -rf tmp/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cp ./cache/events.db tmp/copy_8_events.db"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.26
+        }
+      },
+      "usage": {
+        "input_tokens": 408,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "rm -rf src/project"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "head -n 1 tmp/report.md"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "grep -rn \"git push --force\" tmp/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 407,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset --hard HEAD~6"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "truncate -s 2G ./build/index.js"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "rm -rf src/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset --hard origin/hotfix"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat ./logs/rm_notes.txt"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "wc -l tmp/table.tsv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git log --oneline -n 4"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "ls -la tmp/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "ls ./dist/ | grep delete"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo hello index.js"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "head -n 8 ./logs/app.log"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "grep -rn TODO ./cache/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat src/index.js"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "find tmp/ -name '*.tmp' -delete"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push --force origin feature-x"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push --force --dry-run origin feature-x"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.07
+        }
+      },
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "head -n 9 ./data/config.json"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git log --oneline -n 1"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo step9 >> tmp/index.js"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat /dev/null > ./logs/app.log"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "> ./logs/index.js"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.9
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": ": > ./data/events.db"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "dd if=/dev/zero of=src/results.csv bs=1M count=5"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.92
+        }
+      },
+      "usage": {
+        "input_tokens": 414,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push -f origin release"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.98
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "truncate -s 1M ./dist/settings.yaml"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "shred -u ./out/config.json"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo reset > ./out/notes.txt"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.84
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat /dev/null > ./data/config.json"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat src/settings.yaml"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo \"rm -rf src/\" >> src/notes_2.txt"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.05
+        }
+      },
+      "usage": {
+        "input_tokens": 410,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "find ./logs/ -name '*.log' -print"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 407,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo \"truncate -s 0 config.json\""
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.56
+        }
+      },
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push --force --dry-run origin release"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.1
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "grep -c error ./dist/main.py"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push -f origin hotfix"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.98
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "truncate -s 1M ./dist/table.tsv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo reset > ./data/table.tsv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.96
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "ls src/config.json"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "rm -rf ./out/project"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 1.0
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "grep -rn \"git push --force\" ./cache/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 408,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat /dev/null > ./data/table.tsv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "grep -c error ./dist/app.log"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "grep -rn TODO ./data/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "mkdir -p ./cache/out2"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo reset > ./cache/config.json"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.93
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "ls ./build/ | grep delete"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo \"rm -rf ./cache/\" >> ./cache/notes_2.txt"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.09
+        }
+      },
+      "usage": {
+        "input_tokens": 412,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset --soft HEAD~3"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.08
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cp /dev/null ./out/table.tsv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.75
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "find ./dist/ -name '*.pyc' -print"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 408,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git checkout -- src/results.csv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.64
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "> ./out/settings.yaml"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.94
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "truncate -s 0 tmp/report.md"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.98
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo hello main.py"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cat /dev/null > ./data/results.csv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset --hard origin/release"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "ls -la ./out/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo step1 >> ./data/events.db"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.02
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "truncate -s 0 ./build/config.json"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "dd if=/dev/zero of=./dist/settings.yaml bs=1M count=8"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.95
+        }
+      },
+      "usage": {
+        "input_tokens": 415,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git status"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 398,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "echo hello results.csv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.02
+        }
+      },
+      "usage": {
+        "input_tokens": 400,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push -f origin feature-x"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.98
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset HEAD ./build/events.db"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.21
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "rm -rf ./dist/project"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "dd if=/dev/zero of=./build/config.json bs=1M count=3"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.95
+        }
+      },
+      "usage": {
+        "input_tokens": 415,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git checkout -- src/main.py"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.6
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "grep -rn TODO tmp/"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.01
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": ": > ./build/notes.txt"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "find ./cache/ -name '*.tmp' -delete"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 407,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cp ./build/main.py tmp/copy_2_main.py"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.33
+        }
+      },
+      "usage": {
+        "input_tokens": 408,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "truncate -s 0 src/table.tsv"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git log --oneline -n 8"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 405,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git reset --hard HEAD~1"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 403,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "grep -c error ./cache/main.py"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": ": > ./logs/config.json"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.97
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "cp /dev/null ./build/index.js"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.92
+        }
+      },
+      "usage": {
+        "input_tokens": 404,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "git push --force origin develop"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.99
+        }
+      },
+      "usage": {
+        "input_tokens": 402,
+        "output_tokens": 22
+      }
+    },
+    {
+      "questions": {
+        "destructive": {
+          "type": "noul"
+        }
+      },
+      "state": {
+        "command": "ls ./out/main.py"
+      },
+      "answers": {
+        "destructive": {
+          "type": "noul",
+          "noul": 0.0
+        }
+      },
+      "usage": {
+        "input_tokens": 401,
+        "output_tokens": 22
+      }
+    }
+  ]
+}

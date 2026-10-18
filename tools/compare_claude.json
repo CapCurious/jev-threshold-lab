@@ -1,0 +1,416 @@
+{
+  "summary": {
+    "n": 40,
+    "in_band": 33,
+    "jev_band_ok": 33,
+    "jev_all_ok": 39,
+    "claude_ok": 38,
+    "agree": 37,
+    "unparsed": 0,
+    "jev_latency": 0.1853621006011963,
+    "claude_latency": 3.370543956756592,
+    "jev_cost_per_1000": 0.016963799999999998
+  },
+  "items": [
+    {
+      "id": "c005",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.21467185020446777,
+      "jev_tokens": 402,
+      "claude_latency": 7.815868139266968
+    },
+    {
+      "id": "c006",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": false,
+      "jev_latency": 0.17684507369995117,
+      "jev_tokens": 407,
+      "claude_latency": 8.828504085540771
+    },
+    {
+      "id": "c007",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.1851060390472412,
+      "jev_tokens": 402,
+      "claude_latency": 8.163753032684326
+    },
+    {
+      "id": "c008",
+      "label": true,
+      "cert": 0.88,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.1780412197113037,
+      "jev_tokens": 404,
+      "claude_latency": 3.2074480056762695
+    },
+    {
+      "id": "c009",
+      "label": true,
+      "cert": 0.91,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.18309593200683594,
+      "jev_tokens": 404,
+      "claude_latency": 3.467458724975586
+    },
+    {
+      "id": "c011",
+      "label": false,
+      "cert": 0.99,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.20862698554992676,
+      "jev_tokens": 402,
+      "claude_latency": 3.1906778812408447
+    },
+    {
+      "id": "c012",
+      "label": false,
+      "cert": 1.0,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.1905980110168457,
+      "jev_tokens": 404,
+      "claude_latency": 3.392749071121216
+    },
+    {
+      "id": "c015",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.2060990333557129,
+      "jev_tokens": 402,
+      "claude_latency": 3.152092933654785
+    },
+    {
+      "id": "c016",
+      "label": false,
+      "cert": 0.8,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.1987147331237793,
+      "jev_tokens": 408,
+      "claude_latency": 3.5848031044006348
+    },
+    {
+      "id": "c019",
+      "label": false,
+      "cert": 1.0,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.1819441318511963,
+      "jev_tokens": 403,
+      "claude_latency": 3.5207598209381104
+    },
+    {
+      "id": "c020",
+      "label": false,
+      "cert": 0.99,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.18291378021240234,
+      "jev_tokens": 399,
+      "claude_latency": 3.5203609466552734
+    },
+    {
+      "id": "c023",
+      "label": true,
+      "cert": 0.8,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.1923050880432129,
+      "jev_tokens": 414,
+      "claude_latency": 3.3448007106781006
+    },
+    {
+      "id": "c029",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.1879901885986328,
+      "jev_tokens": 402,
+      "claude_latency": 5.020627975463867
+    },
+    {
+      "id": "c033",
+      "label": false,
+      "cert": 0.98,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.20397210121154785,
+      "jev_tokens": 400,
+      "claude_latency": 3.2313790321350098
+    },
+    {
+      "id": "c042",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.1738438606262207,
+      "jev_tokens": 403,
+      "claude_latency": 3.358566999435425
+    },
+    {
+      "id": "c045",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": false,
+      "jev_latency": 0.17882323265075684,
+      "jev_tokens": 404,
+      "claude_latency": 3.3430299758911133
+    },
+    {
+      "id": "c050",
+      "label": false,
+      "cert": 0.99,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.1766979694366455,
+      "jev_tokens": 403,
+      "claude_latency": 3.469871997833252
+    },
+    {
+      "id": "c052",
+      "label": false,
+      "cert": 1.0,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.17955780029296875,
+      "jev_tokens": 405,
+      "claude_latency": 3.1337969303131104
+    },
+    {
+      "id": "c056",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.1868588924407959,
+      "jev_tokens": 403,
+      "claude_latency": 3.23282790184021
+    },
+    {
+      "id": "c061",
+      "label": true,
+      "cert": 0.97,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.19200706481933594,
+      "jev_tokens": 405,
+      "claude_latency": 3.077677011489868
+    },
+    {
+      "id": "c062",
+      "label": true,
+      "cert": 0.9,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.16939306259155273,
+      "jev_tokens": 401,
+      "claude_latency": 3.5509860515594482
+    },
+    {
+      "id": "c067",
+      "label": true,
+      "cert": 0.97,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.18149399757385254,
+      "jev_tokens": 404,
+      "claude_latency": 3.441746950149536
+    },
+    {
+      "id": "c069",
+      "label": true,
+      "cert": 0.97,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.17867302894592285,
+      "jev_tokens": 405,
+      "claude_latency": 3.824373960494995
+    },
+    {
+      "id": "c071",
+      "label": false,
+      "cert": 0.95,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.23122286796569824,
+      "jev_tokens": 410,
+      "claude_latency": 3.2262208461761475
+    },
+    {
+      "id": "c072",
+      "label": false,
+      "cert": 0.99,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.1855180263519287,
+      "jev_tokens": 407,
+      "claude_latency": 3.203333854675293
+    },
+    {
+      "id": "c073",
+      "label": false,
+      "cert": 0.56,
+      "jev_pred": true,
+      "claude_pred": false,
+      "jev_latency": 0.1707918643951416,
+      "jev_tokens": 406,
+      "claude_latency": 5.611781120300293
+    },
+    {
+      "id": "c078",
+      "label": true,
+      "cert": 0.96,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.17093992233276367,
+      "jev_tokens": 403,
+      "claude_latency": 3.1783299446105957
+    },
+    {
+      "id": "c079",
+      "label": false,
+      "cert": 1.0,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.18721890449523926,
+      "jev_tokens": 400,
+      "claude_latency": 3.201249599456787
+    },
+    {
+      "id": "c090",
+      "label": true,
+      "cert": 0.75,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.18517088890075684,
+      "jev_tokens": 404,
+      "claude_latency": 3.3388781547546387
+    },
+    {
+      "id": "c091",
+      "label": false,
+      "cert": 0.99,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.178663969039917,
+      "jev_tokens": 408,
+      "claude_latency": 3.3234331607818604
+    },
+    {
+      "id": "c095",
+      "label": false,
+      "cert": 0.99,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.19221282005310059,
+      "jev_tokens": 400,
+      "claude_latency": 4.335521936416626
+    },
+    {
+      "id": "c099",
+      "label": false,
+      "cert": 0.98,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.18520617485046387,
+      "jev_tokens": 404,
+      "claude_latency": 3.257065773010254
+    },
+    {
+      "id": "c102",
+      "label": false,
+      "cert": 1.0,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.19870686531066895,
+      "jev_tokens": 398,
+      "claude_latency": 3.7143568992614746
+    },
+    {
+      "id": "c105",
+      "label": false,
+      "cert": 0.79,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.1980597972869873,
+      "jev_tokens": 403,
+      "claude_latency": 3.382520914077759
+    },
+    {
+      "id": "c108",
+      "label": true,
+      "cert": 0.6,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.22240424156188965,
+      "jev_tokens": 402,
+      "claude_latency": 3.5388059616088867
+    },
+    {
+      "id": "c109",
+      "label": false,
+      "cert": 0.99,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.1786360740661621,
+      "jev_tokens": 402,
+      "claude_latency": 3.311854839324951
+    },
+    {
+      "id": "c111",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.223588228225708,
+      "jev_tokens": 407,
+      "claude_latency": 3.1625421047210693
+    },
+    {
+      "id": "c112",
+      "label": false,
+      "cert": 0.6699999999999999,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.1968541145324707,
+      "jev_tokens": 408,
+      "claude_latency": 3.48065185546875
+    },
+    {
+      "id": "c113",
+      "label": true,
+      "cert": 0.99,
+      "jev_pred": true,
+      "claude_pred": true,
+      "jev_latency": 0.17265081405639648,
+      "jev_tokens": 404,
+      "claude_latency": 4.948256015777588
+    },
+    {
+      "id": "c116",
+      "label": false,
+      "cert": 1.0,
+      "jev_pred": false,
+      "claude_pred": false,
+      "jev_latency": 0.2158520221710205,
+      "jev_tokens": 404,
+      "claude_latency": 3.1143012046813965
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "model": "jev-1.13.0",
+  "fitted_on": {
+    "n": 120,
+    "date": "2026-10-18",
+    "source": "commands.jsonl"
+  },
+  "questions": {
+    "destructive": {
+      "type": "noul",
+      "act": 0.6,
+      "review": 0.55,
+      "metrics": {
+        "precision_at_act": 1.0,
+        "recall_at_act": 1.0,
+        "ece": 0.0541
+      }
+    }
+  },
+  "note": "thresholds do not transfer; refit on your data"
+}

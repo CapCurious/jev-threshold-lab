@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Drag the act and review thresholds and watch 120 synthetic shell commands move between act, review and escalate, with precision, recall, coverage, expected cost and calibration recomputed live.">
+<title>Jev Threshold Lab</title>
+<style>
+:root{--bg:#fbfaf6;--panel:#ffffff;--ink:#1d1c1a;--muted:#666158;--line:#dcd7ca;--accent:#1c58b8;--mark:#ffe99a;--markink:#3a2e00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161512;--panel:#1e1d19;--ink:#ece9e0;--muted:#a29d90;--line:#37342c;--accent:#8db3ff;--mark:#5c4a0c;--markink:#ffe9a8}}
+:root[data-theme="dark"]{--bg:#161512;--panel:#1e1d19;--ink:#ece9e0;--muted:#a29d90;--line:#37342c;--accent:#8db3ff;--mark:#5c4a0c;--markink:#ffe9a8}
+*{box-sizing:border-box}
+html{color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:190px minmax(0,1fr);gap:0 36px;max-width:1320px;margin:0 auto;padding:0 24px}
+.rail{position:sticky;top:0;align-self:start;padding:26px 0;max-height:100vh}
+.brand{font-weight:700;font-size:14px;margin:0 0 18px}
+.rail ol{list-style:none;margin:0;padding:0}
+.rail li{margin:0}
+.rail a{display:block;padding:6px 10px;border-left:3px solid transparent;color:var(--muted);text-decoration:none;font-size:14px}
+.rail a:hover{color:var(--ink)}
+.rail a.on{border-left-color:var(--accent);color:var(--ink);font-weight:700}
+main{min-width:0;padding:22px 0 45vh}
+section{scroll-margin-top:12px;margin:0 0 44px}
+h1,h2{margin:0 0 6px;line-height:1.2;letter-spacing:-.01em}
+h1{font-size:26px}
+h2{font-size:22px}
+h3{font-size:14px;margin:0}
+p{margin:0 0 10px;max-width:72ch}
+.verdict{font-size:16px;margin:0 0 14px}
+mark{background:var(--mark);color:var(--markink);padding:0 3px;border-radius:2px}
+.deck{display:grid;grid-template-columns:minmax(250px,320px) minmax(0,1fr);gap:14px;margin-bottom:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.field{margin:0 0 10px}
+.field label{display:flex;justify-content:space-between;font-weight:600;font-size:14px}
+.field output{font-variant-numeric:tabular-nums;font-weight:700}
+input[type=range]{width:100%;margin:4px 0 0;accent-color:var(--accent)}
+.hint{color:var(--muted);font-size:12.5px;margin:2px 0 0}
+.costs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.costs label{font-size:13px;font-weight:600;display:block}
+.costs input{width:100%;font:inherit;padding:4px 6px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink)}
+button{font:inherit;font-size:13.5px;padding:6px 10px;border-radius:6px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;font-weight:600}
+button:hover{background:var(--accent);color:var(--bg)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.stat{border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--bg)}
+.stat b{display:block;font-size:22px;font-variant-numeric:tabular-nums;line-height:1.2}
+.stat span{font-size:12.5px;color:var(--muted)}
+.rel{margin-top:12px}
+.rel h3{margin-bottom:6px}
+.bars{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;height:64px;align-items:end}
+.bar{position:relative;height:100%;border:1px solid var(--line);border-radius:3px;background:var(--bg)}
+.bar i{position:absolute;left:0;right:0;bottom:0;background:var(--accent);opacity:.75}
+.bar u{position:absolute;left:-1px;right:-1px;height:0;border-top:2px solid var(--ink);text-decoration:none}
+.bar.none{border-style:dashed}
+.blab{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;font-size:11px;color:var(--muted);text-align:center;margin-top:3px;font-variant-numeric:tabular-nums}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;min-width:0}
+.col header{padding:9px 12px;border-bottom:1px solid var(--line)}
+.col header h3{display:flex;justify-content:space-between;gap:8px}
+.col header span{font-weight:400;color:var(--muted);font-size:12.5px}
+.col ul{list-style:none;margin:0;padding:0;overflow:auto;height:clamp(240px,36vh,420px)}
+.col li{padding:5px 12px;border-bottom:1px solid var(--line);font-size:12.5px;display:grid;grid-template-columns:42px minmax(0,1fr);gap:8px;align-items:baseline}
+.col li:last-child{border-bottom:0}
+.col li .c{font-variant-numeric:tabular-nums;color:var(--muted)}
+.col li .t{overflow-wrap:anywhere}
+.col li small{display:block;font-family:inherit;color:var(--markink);background:var(--mark);margin-top:2px;padding:0 4px;border-radius:2px;width:max-content;max-width:100%}
+.col li.moved{animation:moved 1.6s ease-out}
+@keyframes moved{from{background:var(--mark)}to{background:transparent}}
+.empty{color:var(--muted);padding:12px;font-size:13px}
+.panels{display:grid;gap:14px}
+.panel table{border-collapse:collapse;font-size:14px;margin:6px 0 10px}
+.panel td,.panel th{border-bottom:1px solid var(--line);padding:5px 12px 5px 0;text-align:left;vertical-align:top}
+.panel ul{margin:0 0 10px;padding-left:20px;max-width:72ch}
+.panel li{margin-bottom:4px}
+footer{color:var(--muted);font-size:13px}
+@media (max-width:860px){
+ .wrap{display:block;padding:0 16px}
+ .rail{position:sticky;top:0;z-index:2;background:var(--bg);padding:8px 0;border-bottom:1px solid var(--line);max-height:none}
+ .brand{display:none}
+ .rail ol{display:flex;overflow-x:auto;gap:4px}
+ .rail a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent;padding:6px 8px}
+ .rail a.on{border-bottom-color:var(--accent)}
+ .deck{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .cols{grid-template-columns:1fr}
+ .col ul{height:190px}
+ h1{font-size:22px}
+ section{scroll-margin-top:56px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="rail" aria-label="Sections">
+<p class="brand">Jev Threshold Lab</p>
+<ol>
+<li><a href="#tune" class="on">Try the thresholds</a></li>
+<li><a href="#jev">What Jev is</a></li>
+<li><a href="#rule">The band rule</a></li>
+<li><a href="#limits">The limits</a></li>
+</ol>
+</nav>
+<main>
+
+<section id="tune">
+<h1>Try the thresholds</h1>
+<p class="verdict" id="verdict" aria-live="polite"></p>
+<div class="deck">
+ <form class="card" id="controls" onsubmit="return false">
+  <div class="field">
+   <label for="act">Act at or above <output id="actv"></output></label>
+   <input type="range" id="act" min="0.51" max="0.99" step="0.01" value="0.85">
+  </div>
+  <div class="field">
+   <label for="rev">Review at or above <output id="revv"></output></label>
+   <input type="range" id="rev" min="0.51" max="0.99" step="0.01" value="0.60">
+   <p class="hint">Certainty is never below 0.5, so review must sit above 0.5 for anything to escalate.</p>
+  </div>
+  <div class="costs">
+   <div><label for="cfp">cost_fp</label><input id="cfp" type="number" min="0" step="0.5" value="1"></div>
+   <div><label for="cfn">cost_fn</label><input id="cfn" type="number" min="0" step="0.5" value="10"></div>
+  </div>
+  <p class="hint">Cost of a wrong yes and a wrong no in the act band. Each item sent to review or escalate costs 0.1.</p>
+  <button type="button" id="best">Set the cheapest bands for these costs</button>
+ </form>
+ <div class="card">
+  <div class="stats">
+   <div class="stat"><b id="sPrec">-</b><span>precision in the act band</span></div>
+   <div class="stat"><b id="sRec">-</b><span>recall of all 60 true yes</span></div>
+   <div class="stat"><b id="sCov">-</b><span>coverage, share inside act</span></div>
+   <div class="stat"><b id="sCost">-</b><span id="sCostSub">expected cost</span></div>
+  </div>
+  <div class="rel">
+   <h3>Reliability <span id="ece" class="mono"></span></h3>
+   <div class="bars" id="bars"></div>
+   <div class="blab" id="blab"></div>
+   <p class="hint">Each bar is the share of true yes among commands whose Jev probability fell in that tenth; the line is the mean probability. A bar at its line means calibrated.</p>
+  </div>
+ </div>
+</div>
+<div class="cols" id="cols">
+ <div class="col"><header><h3>Act <span id="nAct"></span></h3></header><ul id="lAct"></ul></div>
+ <div class="col"><header><h3>Review <span id="nRev"></span></h3></header><ul id="lRev"></ul></div>
+ <div class="col"><header><h3>Escalate <span id="nEsc"></span></h3></header><ul id="lEsc"></ul></div>
+</div>
+<p class="hint">120 synthetic shell commands, lowest certainty first. A highlighted line is a wrong call. A line that just changed band flashes.</p>
+</section>
+
+<section id="jev" class="panel">
+<h2>What Jev is</h2>
+<p>Jev is a hosted decision model from TypeSafe that answers a fixed question with a calibrated number and no prose. Ask it whether a command is destructive and it returns a probability of yes.</p>
+<p>The number is what makes it programmable. Your code owns the policy: act on it above one cut, send it to a person between two, escalate below. Changing a cut never re-runs the model, so you can tune thresholds per question on your own labeled data.</p>
+</section>
+
+<section id="rule" class="panel">
+<h2>The band rule</h2>
+<p>An item acts at or above the act cut, goes to review at or above the review cut and below act, and escalates below review. What gets compared depends on the question type.</p>
+<table>
+<tr><th>Question type</th><th>Banded number</th></tr>
+<tr><td><code>noul</code> (yes or no)</td><td>certainty, <code>max(p, 1 - p)</code>, so a confident no acts as readily as a confident yes</td></tr>
+<tr><td><code>choice</code> (pick one)</td><td>the returned confidence</td></tr>
+<tr><td><code>score</code> (1 to 5)</td><td>the returned confidence</td></tr>
+</table>
+<p>For a yes/no question certainty is never below 0.5, so a review cut of 0.50 means nothing escalates. The sliders stop at 0.51 for that reason.</p>
+</section>
+
+<section id="limits" class="panel">
+<h2>The limits</h2>
+<ul>
+<li>Every number on this page comes from 120 synthetic commands labeled by the rules that generated them (n=120, fit run 2026-10-18, model jev-1.13.0). Thresholds do not transfer; refit on your data.</li>
+<li>Jev gives numbers, not reasons, so the lab shows where it is wrong, not why.</li>
+<li>Calibration is a population property: one answer at 0.90 is not 90% likely to be right.</li>
+<li>Real traffic warning: a gate question scored macro F1 0.94 on a synthetic bench (n=60, 2026-09-22) and found zero true positives at 0.50 on real commands (n=54 hand-labeled, 2026-09-22). The model id was not recorded for either run.</li>
+</ul>
+<footer><p>The command line tool, tests and method are in the repository README.</p></footer>
+</section>
+
+</main>
+</div>
+<script>
+/*DATA:start*/const ITEMS=[["c001","truncate -s 0 src/notes.txt",1,0.99,0.99],["c002","echo step6 >> tmp/results.csv",0,0.98,0.02],["c003","echo \"truncate -s 0 results.csv\"",0,0.59,0.59],["c004","cp /dev/null ./build/results.csv",1,0.83,0.83],["c005","rm -rf ./dist/",1,0.99,0.99],["c006","find ./data/ -name '*.tmp' -delete",1,0.99,0.99],["c007","git reset --hard origin/main",1,0.99,0.99],["c008","git clean -fdx ./dist/",1,0.88,0.88],["c009","git clean -fdx ./out/",1,0.91,0.91],["c010","shred -u tmp/config.json",1,0.98,0.98],["c011","mkdir -p src/out9",0,0.99,0.01],["c012","tail -n 5 src/app.log",0,1.0,0.0],["c013","git checkout -- ./data/settings.yaml",1,0.64,0.64],["c014","tail -n 6 ./dist/index.js",0,1.0,0.0],["c015","git push --force origin release",1,0.99,0.99],["c016","cp ./build/app.log tmp/copy_9_app.log",0,0.8,0.2],["c017","find ./dist/ -name '*.log' -delete",1,0.99,0.99],["c018","cat ./out/rm_events.db",0,0.99,0.01],["c019","wc -l ./logs/report.md",0,1.0,0.0],["c020","git diff release",0,0.99,0.01],["c021","> ./logs/events.db",1,0.97,0.97],["c022","echo reset > ./out/settings.yaml",1,0.9,0.9],["c023","dd if=/dev/zero of=tmp/app.log bs=1M count=5",1,0.8,0.8],["c024","mkdir -p src/out7",0,0.99,0.01],["c025","shred -u ./build/results.csv",1,0.97,0.97],["c026","git diff develop",0,0.99,0.01],["c027","git diff hotfix",0,0.99,0.01],["c028","cat tmp/app.log",0,0.99,0.01],["c029","rm -rf ./data/project",1,0.99,0.99],["c030","git clean -fdx ./cache/",1,0.9,0.9],["c031","git reset --hard HEAD~7",1,0.99,0.99],["c032","echo \"rm -rf tmp/\" >> tmp/notes_3.txt",0,0.93,0.07],["c033","git push origin develop",0,0.98,0.02],["c034","git reset HEAD ./out/notes.txt",0,0.88,0.12],["c035","wc -l tmp/results.csv",0,1.0,0.0],["c036","ls ./data/main.py",0,1.0,0.0],["c037","rm -rf tmp/",1,0.99,0.99],["c038","cp ./cache/events.db tmp/copy_8_events.db",0,0.74,0.26],["c039","rm -rf src/project",1,0.99,0.99],["c040","head -n 1 tmp/report.md",0,1.0,0.0],["c041","grep -rn \"git push --force\" tmp/",0,0.99,0.01],["c042","git reset --hard HEAD~6",1,0.99,0.99],["c043","truncate -s 2G ./build/index.js",1,0.99,0.99],["c044","rm -rf src/",1,0.99,0.99],["c045","git reset --hard origin/hotfix",1,0.99,0.99],["c046","cat ./logs/rm_notes.txt",0,0.99,0.01],["c047","wc -l tmp/table.tsv",0,1.0,0.0],["c048","git log --oneline -n 4",0,1.0,0.0],["c049","ls -la tmp/",0,1.0,0.0],["c050","ls ./dist/ | grep delete",0,0.99,0.01],["c051","echo hello index.js",0,0.99,0.01],["c052","head -n 8 ./logs/app.log",0,1.0,0.0],["c053","grep -rn TODO ./cache/",0,1.0,0.0],["c054","cat src/index.js",0,1.0,0.0],["c055","find tmp/ -name '*.tmp' -delete",1,0.99,0.99],["c056","git push --force origin feature-x",1,0.99,0.99],["c057","git push --force --dry-run origin feature-x",0,0.93,0.07],["c058","head -n 9 ./data/config.json",0,1.0,0.0],["c059","git log --oneline -n 1",0,1.0,0.0],["c060","echo step9 >> tmp/index.js",0,0.99,0.01],["c061","cat /dev/null > ./logs/app.log",1,0.97,0.97],["c062","> ./logs/index.js",1,0.9,0.9],["c063",": > ./data/events.db",1,0.97,0.97],["c064","dd if=/dev/zero of=src/results.csv bs=1M count=5",1,0.92,0.92],["c065","git push -f origin release",1,0.98,0.98],["c066","truncate -s 1M ./dist/settings.yaml",1,0.99,0.99],["c067","shred -u ./out/config.json",1,0.97,0.97],["c068","echo reset > ./out/notes.txt",1,0.84,0.84],["c069","cat /dev/null > ./data/config.json",1,0.97,0.97],["c070","cat src/settings.yaml",0,1.0,0.0],["c071","echo \"rm -rf src/\" >> src/notes_2.txt",0,0.95,0.05],["c072","find ./logs/ -name '*.log' -print",0,0.99,0.01],["c073","echo \"truncate -s 0 config.json\"",0,0.56,0.56],["c074","git push --force --dry-run origin release",0,0.9,0.1],["c075","grep -c error ./dist/main.py",0,1.0,0.0],["c076","git push -f origin hotfix",1,0.98,0.98],["c077","truncate -s 1M ./dist/table.tsv",1,0.99,0.99],["c078","echo reset > ./data/table.tsv",1,0.96,0.96],["c079","ls src/config.json",0,1.0,0.0],["c080","rm -rf ./out/project",1,1.0,1.0],["c081","grep -rn \"git push --force\" ./cache/",0,0.99,0.01],["c082","cat /dev/null > ./data/table.tsv",1,0.97,0.97],["c083","grep -c error ./dist/app.log",0,0.99,0.01],["c084","grep -rn TODO ./data/",0,1.0,0.0],["c085","mkdir -p ./cache/out2",0,0.99,0.01],["c086","echo reset > ./cache/config.json",1,0.93,0.93],["c087","ls ./build/ | grep delete",0,1.0,0.0],["c088","echo \"rm -rf ./cache/\" >> ./cache/notes_2.txt",0,0.91,0.09],["c089","git reset --soft HEAD~3",0,0.92,0.08],["c090","cp /dev/null ./out/table.tsv",1,0.75,0.75],["c091","find ./dist/ -name '*.pyc' -print",0,0.99,0.01],["c092","git checkout -- src/results.csv",1,0.64,0.64],["c093","> ./out/settings.yaml",1,0.94,0.94],["c094","truncate -s 0 tmp/report.md",1,0.98,0.98],["c095","echo hello main.py",0,0.99,0.01],["c096","cat /dev/null > ./data/results.csv",1,0.97,0.97],["c097","git reset --hard origin/release",1,0.99,0.99],["c098","ls -la ./out/",0,1.0,0.0],["c099","echo step1 >> ./data/events.db",0,0.98,0.02],["c100","truncate -s 0 ./build/config.json",1,0.99,0.99],["c101","dd if=/dev/zero of=./dist/settings.yaml bs=1M count=8",1,0.95,0.95],["c102","git status",0,1.0,0.0],["c103","echo hello results.csv",0,0.98,0.02],["c104","git push -f origin feature-x",1,0.98,0.98],["c105","git reset HEAD ./build/events.db",0,0.79,0.21],["c106","rm -rf ./dist/project",1,0.99,0.99],["c107","dd if=/dev/zero of=./build/config.json bs=1M count=3",1,0.95,0.95],["c108","git checkout -- src/main.py",1,0.6,0.6],["c109","grep -rn TODO tmp/",0,0.99,0.01],["c110",": > ./build/notes.txt",1,0.97,0.97],["c111","find ./cache/ -name '*.tmp' -delete",1,0.99,0.99],["c112","cp ./build/main.py tmp/copy_2_main.py",0,0.67,0.33],["c113","truncate -s 0 src/table.tsv",1,0.99,0.99],["c114","git log --oneline -n 8",0,1.0,0.0],["c115","git reset --hard HEAD~1",1,0.99,0.99],["c116","grep -c error ./cache/main.py",0,1.0,0.0],["c117",": > ./logs/config.json",1,0.97,0.97],["c118","cp /dev/null ./build/index.js",1,0.92,0.92],["c119","git push --force origin develop",1,0.99,0.99],["c120","ls ./out/main.py",0,1.0,0.0]];/*DATA:end*/
+(function(){
+"use strict";
+var EPS=1e-9, REVIEW_COST=0.1;
+var items=ITEMS.map(function(r){return {id:r[0],text:r[1],label:r[2]===1,cert:r[3],p:r[4]};});
+var N=items.length;
+var POS=items.filter(function(x){return x.label;}).length;
+function $(id){return document.getElementById(id);}
+var el={act:$("act"),rev:$("rev"),cfp:$("cfp"),cfn:$("cfn"),actv:$("actv"),revv:$("revv"),
+ verdict:$("verdict"),sPrec:$("sPrec"),sRec:$("sRec"),sCov:$("sCov"),sCost:$("sCost"),sCostSub:$("sCostSub"),
+ nAct:$("nAct"),nRev:$("nRev"),nEsc:$("nEsc"),lAct:$("lAct"),lRev:$("lRev"),lEsc:$("lEsc"),
+ bars:$("bars"),blab:$("blab"),ece:$("ece"),best:$("best")};
+var prevBand={};
+function fmt(x,d){return x===null?"n/a":x.toFixed(d);}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function wrong(x){return (x.p>=0.5)!==x.label;}
+function bandOf(x,act,rev){return x.cert>=act-EPS?"act":(x.cert>=rev-EPS?"rev":"esc");}
+function metricsAt(t){
+ var tp=0,fp=0,fn=0,nAct=0;
+ items.forEach(function(x){
+  if(x.cert<t-EPS)return;
+  nAct++;
+  if(x.p>=0.5&&x.label)tp++;else if(x.p>=0.5)fp++;else if(x.label)fn++;
+ });
+ return {t:t,nAct:nAct,tp:tp,fp:fp,fn:fn,
+  precision:(tp+fp)?tp/(tp+fp):null,recall:POS?tp/POS:null,coverage:nAct/N};
+}
+function cost(m,cfp,cfn){return cfp*m.fp+cfn*m.fn+REVIEW_COST*(N-m.nAct);}
+function cents(i){return i/100;}
+function pickBands(cfp,cfn){
+ var best=null,bestM=null,i,m,c;
+ for(i=60;i<=99;i++){
+  m=metricsAt(cents(i));c=cost(m,cfp,cfn);
+  if(best===null||c<=best+EPS){best=c;bestM=m;}
+ }
+ var act=Math.round(bestM.t*100),top=act-5,review=Math.min(60,top);
+ if(bestM.precision!==null){
+  for(i=55;i<=top;i++){
+   m=metricsAt(cents(i));
+   if(m.precision!==null&&m.precision>=bestM.precision-0.05-EPS){review=i;break;}
+  }
+ }
+ return {act:cents(act),review:cents(review),cost:best};
+}
+function reliability(){
+ var bins=[],i;
+ for(i=0;i<10;i++)bins.push([]);
+ items.forEach(function(x){bins[Math.min(Math.floor(x.p*10),9)].push(x);});
+ var ece=0;
+ var rows=bins.map(function(b,k){
+  if(!b.length)return {k:k,n:0};
+  var mp=b.reduce(function(s,x){return s+x.p;},0)/b.length;
+  var ob=b.filter(function(x){return x.label;}).length/b.length;
+  ece+=b.length/N*Math.abs(mp-ob);
+  return {k:k,n:b.length,mp:mp,ob:ob};
+ });
+ return {rows:rows,ece:ece};
+}
+function drawReliability(){
+ var r=reliability(),h="",l="";
+ r.rows.forEach(function(b){
+  var lo=(b.k/10).toFixed(1);
+  if(!b.n){h+='<div class="bar none" title="'+lo+' to '+((b.k+1)/10).toFixed(1)+': no commands"></div>';}
+  else{h+='<div class="bar" title="'+lo+' to '+((b.k+1)/10).toFixed(1)+': '+b.n+' commands, mean probability '+b.mp.toFixed(3)+', observed yes '+b.ob.toFixed(3)+'"><i style="height:'+(b.ob*100)+'%"></i><u style="bottom:'+(b.mp*100)+'%"></u></div>';}
+  l+='<span>'+(b.n||"-")+'</span>';
+ });
+ el.bars.innerHTML=h;el.blab.innerHTML=l;
+ el.ece.textContent="ECE "+r.ece.toFixed(4);
+ return r;
+}
+function row(x,moved){
+ var w=wrong(x);
+ return '<li'+(moved?' class="moved"':'')+'><span class="c mono">'+x.cert.toFixed(2)+'</span><span class="t mono">'+esc(x.text)+
+  (w?'<small>wrong: Jev said '+(x.p>=0.5?"yes":"no")+', label '+(x.label?"yes":"no")+'</small>':'')+'</span></li>';
+}
+function render(initial){
+ var act=parseFloat(el.act.value),rev=parseFloat(el.rev.value);
+ var cfp=parseFloat(el.cfp.value),cfn=parseFloat(el.cfn.value);
+ if(!(cfp>=0))cfp=0;if(!(cfn>=0))cfn=0;
+ el.actv.textContent=act.toFixed(2);el.revv.textContent=rev.toFixed(2);
+ var groups={act:[],rev:[],esc:[]},cur={};
+ items.slice().sort(function(a,b){return a.cert-b.cert||(a.id<b.id?-1:1);}).forEach(function(x){
+  var b=bandOf(x,act,rev);cur[x.id]=b;groups[b].push(x);
+ });
+ function fill(list,node,count,label){
+  node.innerHTML=groups[list].length?groups[list].map(function(x){return row(x,!initial&&prevBand[x.id]&&prevBand[x.id]!==list);}).join(""):'<li class="empty">Nothing here at these cuts.</li>';
+  count.textContent=groups[list].length+" of "+N;
+ }
+ fill("act",el.lAct,el.nAct);fill("rev",el.lRev,el.nRev);fill("esc",el.lEsc,el.nEsc);
+ prevBand=cur;
+ var m=metricsAt(act);
+ el.sPrec.textContent=fmt(m.precision,3);
+ el.sRec.textContent=fmt(m.recall,3);
+ el.sCov.textContent=fmt(m.coverage,3);
+ var c=cost(m,cfp,cfn);
+ el.sCost.textContent=c.toFixed(2);
+ el.sCostSub.textContent="expected cost, "+(c/N*1000).toFixed(1)+" per 1,000 items";
+ var handled=Math.round(m.coverage*100);
+ el.verdict.innerHTML='At act <b>'+act.toFixed(2)+'</b> and review <b>'+rev.toFixed(2)+'</b> Jev decides '+handled+'% of the '+N+' commands itself with '+
+  (m.fp+m.fn===0?'<mark>0 wrong calls</mark>':'<mark>'+(m.fp+m.fn)+' wrong call'+(m.fp+m.fn===1?'':'s')+'</mark>')+
+  ', and '+groups.rev.length+' go to review and '+groups.esc.length+' escalate.';
+}
+function onAct(){
+ var a=parseFloat(el.act.value);
+ if(parseFloat(el.rev.value)>a)el.rev.value=a.toFixed(2);
+ render();
+}
+function onRev(){
+ var r=parseFloat(el.rev.value);
+ if(parseFloat(el.act.value)<r)el.act.value=r.toFixed(2);
+ render();
+}
+el.act.addEventListener("input",onAct);el.act.addEventListener("change",onAct);
+el.rev.addEventListener("input",onRev);el.rev.addEventListener("change",onRev);
+["input","change"].forEach(function(ev){el.cfp.addEventListener(ev,function(){render();});el.cfn.addEventListener(ev,function(){render();});});
+el.best.addEventListener("click",function(){
+ var cfp=Math.max(0,parseFloat(el.cfp.value)||0),cfn=Math.max(0,parseFloat(el.cfn.value)||0);
+ var b=pickBands(cfp,cfn);
+ el.act.value=b.act.toFixed(2);el.rev.value=b.review.toFixed(2);render();
+});
+window.jevLab={pickBands:pickBands,metricsAt:metricsAt,reliability:reliability,state:function(){return {act:el.act.value,review:el.rev.value};}};
+
+// rail: highlight the section in view with a plain scroll listener
+var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+var secs=links.map(function(a){return document.getElementById(a.getAttribute("href").slice(1));});
+function mark(){
+ var y=window.innerHeight*0.2,cur=0,i;
+ for(i=0;i<secs.length;i++){if(secs[i].getBoundingClientRect().top<=y)cur=i;}
+ if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur=secs.length-1;
+ links.forEach(function(a,k){a.classList.toggle("on",k===cur);});
+}
+window.addEventListener("scroll",mark,{passive:true});window.addEventListener("resize",mark);
+links.forEach(function(a){a.addEventListener("click",function(){setTimeout(mark,0);});});
+
+drawReliability();render(true);mark();
+})();
+</script>
+</body>
+</html>
