@@ -55,6 +55,54 @@ class JevError(RuntimeError):
         self.status = status
         self.body = body
 
+    @property
+    def fatal(self):
+        return self.status in (401, 403)
+
+
+class InputError(RuntimeError):
+    """A JSONL input could not be read or did not match its required shape."""
+
+
+def read_jsonl(path, required=(), booleans=()):
+    """Read JSON objects from UTF-8 JSONL and validate required fields."""
+    try:
+        with open(path, "rb") as fh:
+            raw = fh.read()
+    except OSError as exc:
+        raise InputError("{}:0: {}".format(path, exc.strerror or str(exc)))
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        line = raw[:exc.start].count(b"\n") + 1
+        raise InputError("{}:{}: not UTF-8 text (bad byte at offset {}); save it as UTF-8".format(
+            path, line, exc.start))
+    rows = []
+    for number, line in enumerate(text.splitlines(), 1):
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except ValueError as exc:
+            raise InputError("{}:{}: not valid JSON ({}); each line must be one JSON object".format(
+                path, number, exc))
+        if not isinstance(row, dict):
+            raise InputError("{}:{}: each line must be one JSON object".format(path, number))
+        for field in required:
+            if field not in row:
+                raise InputError("{}:{}: missing required field {!r}".format(path, number, field))
+        for field in booleans:
+            value = row.get(field)
+            if isinstance(value, str) and value.lower() in ("true", "false"):
+                row[field] = value.lower() == "true"
+            elif not isinstance(value, bool):
+                raise InputError("{}:{}: {!r} must be true or false, got {!r}".format(
+                    path, number, field, value))
+        rows.append(row)
+    if not rows:
+        raise InputError("{}:1: has no items".format(path))
+    return rows
+
 
 def get_key():
     for name in ("JEV_API_KEY", "TYPESAFE_API_KEY"):
@@ -118,10 +166,10 @@ class _Counters(object):
 
 
 class LiveClient(_Counters):
-    def __init__(self, model="jev-latest", timeout=30, key=None):
+    def __init__(self, model="jev-latest", timeout=None, key=None):
         _Counters.__init__(self)
         self.model = model
-        self.timeout = timeout
+        self.timeout = float(os.environ.get("JEV_TIMEOUT_S", "10")) if timeout is None else timeout
         self._key = key
         self._warned = False
 

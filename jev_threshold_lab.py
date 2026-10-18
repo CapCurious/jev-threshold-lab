@@ -22,6 +22,7 @@ import json
 import os
 import re
 import sys
+import tempfile
 import time
 
 import jev_client
@@ -49,6 +50,8 @@ def grid(lo=0.50, hi=0.99, step=0.01):
 def coarse_grid(step):
     """Every step-th point of the 0.50 to 0.99 grid, plus 0.99 itself."""
     every = int(round(step / 0.01))
+    if every < 1 or abs(every * 0.01 - step) > EPS:
+        raise ValueError("--step must be a multiple of 0.01 in (0, 0.5]")
     pts = [t for i, t in enumerate(grid()) if i % every == 0]
     if pts[-1] != 0.99:
         pts.append(0.99)
@@ -322,14 +325,16 @@ def format_ladder(result):
 # --------------------------------------------------------------------- file I/O
 
 def load_jsonl(path):
-    with open(path, "r", encoding="utf-8") as fh:
-        return [json.loads(line) for line in fh if line.strip()]
+    return jev_client.read_jsonl(path, required=("id", "text", "label"), booleans=("label",))
 
 
 def write_jsonl(path, rows):
-    with open(path, "w", encoding="utf-8") as fh:
+    folder = os.path.dirname(os.path.abspath(path))
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=folder, delete=False) as fh:
+        part = fh.name
         for row in rows:
             fh.write(json.dumps(row) + "\n")
+    os.replace(part, path)
 
 
 def load_json(path):
@@ -338,9 +343,12 @@ def load_json(path):
 
 
 def write_json(path, obj):
-    with open(path, "w", encoding="utf-8") as fh:
+    folder = os.path.dirname(os.path.abspath(path))
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=folder, delete=False) as fh:
+        part = fh.name
         json.dump(obj, fh, indent=2)
         fh.write("\n")
+    os.replace(part, path)
 
 
 def default_path(name):
@@ -359,21 +367,21 @@ def prob_row(item, answers):
 
 def fit_items(client, items, questions, record=None, log=None):
     """One call per item. Returns (rows, failures)."""
-    rows, failures = [], 0
+    rows, failures, consecutive = [], 0, 0
     for i, item in enumerate(items):
         state = {"command": item["text"]}
         answers = usage = None
         for attempt in (1, 2):
             try:
                 answers, usage = client.ask(state, questions)
+                consecutive = 0
                 break
             except jev_client.JevError as exc:
-                if exc.status in (401, 403) or isinstance(client, jev_client.RecordedClient):
+                consecutive += 1
+                if exc.fatal or isinstance(client, jev_client.RecordedClient) or consecutive >= 3:
                     raise
                 if attempt == 2:
                     failures += 1
-                    if log:
-                        log("skip {}: {}".format(item["id"], exc))
                 else:
                     time.sleep(1.0)
         if answers is None:
@@ -432,8 +440,11 @@ def pick_question(rows, wanted=None):
 def cmd_fit(args, out=print):
     items = load_jsonl(args.items)
     questions = load_json(args.questions)
-    if args.limit:
+    if args.limit is not None:
         items = items[:args.limit]
+    probs_path = args.probs or (None if args.demo else os.path.abspath("probabilities.jsonl"))
+    policy_path = args.policy or (None if args.demo else os.path.abspath("policy.json"))
+    outputs = [path for path in (probs_path, policy_path, args.record) if path]
     client = jev_client.client_from_env(demo_path=REPLAY if args.demo else None, model=args.model)
     record = [] if args.record else None
     log = None if args.demo else (lambda msg: print(msg, file=sys.stderr))
@@ -446,8 +457,9 @@ def cmd_fit(args, out=print):
         raise SystemExit("no successful calls; nothing written")
     source = os.path.basename(args.items)
     policy = build_policy(args.model, rows, source, questions)
-    probs_path = args.probs or (None if args.demo else default_path("examples/probabilities.jsonl"))
-    policy_path = args.policy or (None if args.demo else default_path("policy.json"))
+    for path in outputs:
+        if os.path.exists(path) and not args.force:
+            raise ValueError("{} exists; pass --force to overwrite".format(path))
     if probs_path:
         write_jsonl(probs_path, rows)
     if policy_path:
@@ -470,7 +482,7 @@ def _load_scored(args):
 def cmd_sweep(args, out=print):
     _, qid, scored = _load_scored(args)
     out("question: {}  n={}".format(qid, len(scored)))
-    out(format_sweep(sweep(scored, coarse_grid(args.step) if args.step else None)))
+    out(format_sweep(sweep(scored, coarse_grid(args.step) if args.step is not None else None)))
     out(RECALL_NOTE)
 
 
@@ -489,7 +501,15 @@ def cmd_bands(args, out=print):
     if policy_path:
         qtype = rows[0]["answers"][qid]["type"]
         if os.path.exists(policy_path):
+            if not args.force and not args.demo:
+                raise ValueError("{} exists; pass --force to overwrite".format(policy_path))
             policy = load_json(policy_path)
+            for prior_qid, prior in policy.get("questions", {}).items():
+                act, review = prior.get("act"), prior.get("review")
+                if not isinstance(act, (int, float)) or not isinstance(review, (int, float)) or not (
+                        0.0 <= review < act <= 1.0):
+                    raise ValueError("policy question {!r}: thresholds require 0 <= review < act <= 1".format(
+                        prior_qid))
         else:
             policy = build_policy(args.model, rows, "probabilities.jsonl", {qid: {"type": qtype}})
         policy["questions"][qid] = {
@@ -554,6 +574,7 @@ def build_parser():
     p.add_argument("--policy", help="output policy.json (default ./policy.json beside the module)")
     p.add_argument("--record", help="also write a recorded-response file for --demo")
     p.add_argument("--limit", type=int, help="only the first N items")
+    p.add_argument("--force", action="store_true", help="overwrite existing output files")
     p.set_defaults(func=cmd_fit)
 
     for name, fn, text in (("sweep", cmd_sweep, "precision, recall, F1, coverage per threshold"),
@@ -572,6 +593,7 @@ def build_parser():
             q.add_argument("--cost-review", type=float, default=0.1,
                            help="cost of sending one item to review or escalate (default 0.1)")
             q.add_argument("--policy", help="policy.json to rewrite (default ./policy.json beside the module)")
+            q.add_argument("--force", action="store_true", help="overwrite an existing policy file")
         q.set_defaults(func=fn)
     return parser
 
@@ -581,6 +603,14 @@ def main(argv=None):
     if args.demo and args.cmd != "fit":
         print(jev_client.DEMO_LABEL)
     try:
+        if getattr(args, "limit", None) is not None and args.limit < 1:
+            raise ValueError("--limit must be >= 1")
+        if getattr(args, "step", None) is not None and not (0.0 < args.step <= 0.5):
+            raise ValueError("--step must be in (0, 0.5]")
+        for flag in ("cost_fp", "cost_fn", "cost_review"):
+            value = getattr(args, flag, None)
+            if value is not None and not (value > 0.0):
+                raise ValueError("--{} must be > 0".format(flag.replace("_", "-")))
         if args.cmd is None:
             if not args.demo:
                 build_parser().print_help()
@@ -589,7 +619,7 @@ def main(argv=None):
             return 0
         args.func(args)
         return 0
-    except jev_client.JevKeyMissing as exc:
+    except (jev_client.JevKeyMissing, jev_client.InputError, ValueError) as exc:
         print("error: {}".format(exc), file=sys.stderr)
         return 2
     except (jev_client.JevError, FileNotFoundError) as exc:

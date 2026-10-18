@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased, 2026-10-18 (iteration 2 of the quality loop)
+
+- Input validation: a missing file, a non-UTF8 file, a malformed JSONL line or a record missing a field ends in one "error: <path>:<line>: <what>" line and exit 2, never a traceback.
+- Range checks: thresholds, costs, steps and limits outside their range end in one line naming the flag and the allowed range, exit 2.
+- Fail fast: 10 s HTTP timeout; after 3 consecutive failed calls the run stops with the last cause.
+- No clobber: outputs are written to a temp file then renamed; a run that fails midway leaves the previous file byte-identical; an existing output needs --force.
+- README: cost in short dated sentences (3.5 minutes per 1,000 from the kit's own 25 s per 120), "no key, offline" on the demo line.
+
 ## Unreleased, 2026-10-18 (iteration 1 of the quality loop)
 
 - README cut from 1,707 to about 1,090 words: first screen is the purpose, the strongest measured number, the demo and a three-line quickstart; cost per 1,000 and 100,000 commands and a "nothing to host" line added; the Jev section is shared word for word with the sibling kits.
