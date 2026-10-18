@@ -6,14 +6,14 @@ On 120 synthetic shell commands, a destructive-command gate at the common 0.85 t
 ![jev-threshold-lab demo run](docs/demo.gif)
 ## Quickstart
 ```
-python3 jev_threshold_lab.py --demo
+python3 jev_threshold_lab.py --demo          # no key, offline
 export JEV_API_KEY=your-key
 python3 jev_threshold_lab.py fit examples/commands.jsonl examples/questions.json --model jev-1.13.0
 ```
 
 Run in a clone (`git clone https://github.com/CapCurious/jev-threshold-lab && cd jev-threshold-lab`) with Python 3.10 or newer, standard library only, or try `uvx --from git+https://github.com/CapCurious/jev-threshold-lab jev-threshold-lab --demo`. The demo replays a recorded run. The fit needs a key from https://console.typesafe.ai/keys (`TYPESAFE_API_KEY` also works).
 
-On jev-1.13.0 at the published input price (2026-10-18), fitting 1,000 commands costs about $0.017 and takes about 3.2 minutes serial, and 100,000 cost about $1.70 and about 5.3 hours serial; demo mode is free and offline, and live mode sends each command's text to TypeSafe.
+Cost, measured 2026-10-18 on jev-1.13.0 at the published $0.042 per million input tokens: fitting 120 commands took 25 seconds and $0.002, so 1,000 commands cost about $0.017 and 3.5 minutes serial, and 100,000 about $1.70 and 5.8 hours. Demo mode is free and offline. Live mode sends each command's text to TypeSafe.
 
 Nothing to host: the explainer is a static page on GitHub Pages and the kit runs locally; there is no browser playground because the Jev API rejects browser origins (a preflight from github.io answered 400 Disallowed CORS origin on 2026-10-18). Explainer: https://capcurious.github.io/jev-threshold-lab/
 
